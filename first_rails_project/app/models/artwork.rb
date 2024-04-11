@@ -16,4 +16,9 @@ class Artwork < ApplicationRecord
     has_many :shared_viewers,
         through: :artwork_shares,
         source: :viewer
+
+    def self.artworks_for_user_id(user_id)
+        self.join(:artwork_shares).where("artist_id = :user_id OR id IN (SELECT artwork_id FROM artwork_shares WHERE viewer_id = :user_id)", user_id: user_id)
+    end
+
 end
