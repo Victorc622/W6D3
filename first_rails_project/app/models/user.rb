@@ -3,15 +3,15 @@ class User < ApplicationRecord
 
   has_many :artwork,
     primary_key: :id,
-    foreign_key: :artwork_id,
-    class_name: :Artwork,
+    foreign_key: :artist_id,
+    inverse_of: :users,
 
     dependent: :destroy
 
   has_many :artwork_shares,
     primary_key: :id,
     foreign_key: :viewer_id,
-    class_name: :ArtworkShares,
+    inverse_of: :viewer,
 
     dependent: :destroy
 
