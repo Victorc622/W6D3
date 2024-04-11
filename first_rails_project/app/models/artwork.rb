@@ -11,7 +11,8 @@ class Artwork < ApplicationRecord
     has_many :artwork_shares,
         primary_key: :id,
         foreign_key: :artwork_id,
-        inverse_of: :artwork
+        inverse_of: :artwork,
+        dependent: :destroy
 
     has_many :comments,
         primary_key: :id,
