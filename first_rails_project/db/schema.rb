@@ -19,9 +19,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_11_194512) do
     t.bigint "viewer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artwork_id", "viewer_id"], name: "index_artwork_shares_on_artwork_id_and_viewer_id", unique: true
-    t.index ["artwork_id"], name: "index_artwork_shares_on_artwork_id"
-    t.index ["viewer_id"], name: "index_artwork_shares_on_viewer_id"
   end
 
   create_table "artworks", force: :cascade do |t|
@@ -50,8 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_11_194512) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "artwork_shares", "artworks"
-  add_foreign_key "artwork_shares", "users", column: "viewer_id"
   add_foreign_key "comments", "artworks"
   add_foreign_key "comments", "users", column: "author_id"
 end

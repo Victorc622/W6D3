@@ -18,3 +18,5 @@ dog_image = Artwork.create(title: 'dog_bark', image_url: 'www.dog.com', artist_i
 
 ArtworkShare.create(artwork_id: cat_picture.id, viewer_id: victor.id)
 ArtworkShare.create(artwork_id: dog_image.id, viewer_id: edison.id)
+
+
