@@ -24,6 +24,9 @@ class Artwork < ApplicationRecord
         through: :artwork_shares,
         source: :viewer
 
+    has_many :likes,
+        as: :likeable
+
     def self.artworks_for_user_id(user_id)
         user = User.includes(:shared_artworks, :artwork).find(user_id)
         user.artwork + user.shared_artworks

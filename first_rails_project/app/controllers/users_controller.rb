@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
     def index
-        @users = User.all
+
+        if params[:username].present?
+            @users = User.where("username LIKE ?", "%#{params[:username]}%")
+        else
+            @users = User.all
+        end
+
         render json: @users
     end
 
@@ -31,7 +37,7 @@ class UsersController < ApplicationController
     def destroy
         @user = User.find(params[:id])
         @user.destroy
-        
+
         redirect_to users_url
     end
 
