@@ -22,4 +22,19 @@ class User < ApplicationRecord
   has_many :shared_artworks,
     through: :artwork_shares,
     source: :artwork
+  
+  has_many :liked_comments,
+    through: :likes,
+    source: :likeable,
+    source_type: "Comment"
+
+  has_many :liked_artwork,
+    through: :likes,
+    source: :likeable,
+    source_type: "Artwork"
+
+    # def self.liked_artworks_and_comments_for_user_id(user_id)
+    #   user = User.includes(:liked_comments, :liked_artwork).find(user_id)
+    #   user.liked_artwork + user.liked_comments
+    # end
 end

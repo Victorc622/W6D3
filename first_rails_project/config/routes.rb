@@ -32,4 +32,7 @@ Rails.application.routes.draw do
     resources :comments, only:[:index]
   end
 
+  # resources :users do
+  #   resources :liked_comments
+
 end

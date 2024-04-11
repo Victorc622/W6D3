@@ -22,6 +22,8 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        # @artworks_comments = User.liked_artworks_and_comments_for_user_id(params[:id])
+        
         render json: @user
     end
 
